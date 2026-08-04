@@ -47,7 +47,9 @@ class change_url(StatesGroup):
 @router.message(Command("start"))
 async def start(message: Message):
     await message.answer("Этот бот - это уголок силы и разума в интернете")
+    await asyncio.sleep(2)
     await message.answer("Здесь будет храниться самая нужная информация, чтобы я не забывал направление")
+    await asyncio.sleep(2)
     await message.answer("Нажми на /continue чтобы продолжить")
     async with aiosqlite.connect("database.db") as conn:
         await conn.execute("CREATE TABLE IF NOT EXISTS thinking1("
@@ -58,29 +60,12 @@ async def start(message: Message):
 
         await conn.commit()
 
-    async with aiosqlite.connect("database.db") as conn:
-        await conn.execute("CREATE TABLE IF NOT EXISTS motivation("
-                           "id INTEGER,"
-                           "number INTEGER PRIMARY KEY,"
-                           "url TEXT,"
-                           "text TEXT)")
-        await conn.commit()
-
-    async with aiosqlite.connect("database.db") as conn:
-        await conn.execute("CREATE TABLE IF NOT EXISTS woman("
-                           "id INTEGER,"
-                           "number INTEGER PRIMARY KEY,"
-                           "url TEXT,"
-                           "text TEXT)")
-        await conn.commit()
-
-
 
 @router.message(Command("continue"))
 async def next(message: Message):
     await message.answer("Замечательно, выбери группу с которой будешь взаимодействовать",reply_markup=button_group())
 
-@router.message(F.text == "Мышление")
+@router.message(F.text == "МЫШЛЕНИЕ🧠")
 async def mind(message, state: FSMContext):
 
 
@@ -93,11 +78,11 @@ async def show1(callback):
     info = await mindset(owner_id=current_user_id)
 
     if info:
-        text_quote = "Вот все ссылки:\n\n"
+        text_quote = "📌<b>Вот все ссылки:</b>\n\n"
         for number, url, text in info:
-            text_quote += f"{number}. Ссылка: {url}\nПримечание: {text}\n\n"
+            text_quote += f"<b>{number}.</b> <b>Ссылка:</b> {url}\n\n<b>Примечание:</b>\n{text}\n\n\n"
 
-        await callback.message.answer(text_quote,reply_markup=button_thinking_under())
+        await callback.message.answer(text_quote,reply_markup=button_thinking_under(),parse_mode=ParseMode.HTML)
     else:
         await callback.message.answer("В файле пока пусто, добавь первую ссылку",reply_markup=button_thinking_first_add())
 
@@ -154,10 +139,7 @@ async def first_url_text(message, state: FSMContext):
         await conn.execute("INSERT INTO thinking1 (owner_id, url, text) VALUES (?,?,?) ",(first_id,data_url,data_text))
         await conn.commit()
     await state.clear()
-    await message.answer("Твое видео сохранено в МЫШЛЕНИЕ")
-
-
-
+    await message.answer("Твое видео сохранено в <b>МЫШЛЕНИЕ</b>",reply_markup=button_thinking(),parse_mode=ParseMode.HTML)
 
 
 

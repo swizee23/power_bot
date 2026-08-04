@@ -25,18 +25,17 @@ async def mindset(owner_id: int):
             return result
 
 
-async def mindmotiv(message):
-    user_id = message.from_user.id
+async def mindmotiv(user_id: int):
     async with aiosqlite.connect("database.db") as conn:
-        cursor = await conn.execute("SELECT * FROM thinking WHERE id = ?",(user_id,))
-        result = await cursor.fetchone()
-        return result
+        async with conn.execute("SELECT number, url, text FROM motivation1 WHERE owner_id = ?",(user_id,)) as cursor:
+            result = await cursor.fetchall()
+            return result
 
-async def mindwoman(message):
-    user_id = message.from_user.id
+
+async def mindwoman(owner_id: int):
     async with aiosqlite.connect("database.db") as conn:
-        cursor = await conn.execute("SELECT * FROM thinking WHERE id = ?",(user_id,))
-        result = await cursor.fetchone()
+        cursor = await conn.execute("SELECT number, url, text FROM woman1 WHERE owner_id = ?",(owner_id,))
+        result = await cursor.fetchall()
         return result
 
 

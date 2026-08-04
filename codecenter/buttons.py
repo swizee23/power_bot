@@ -20,31 +20,33 @@ from aiogram.filters.callback_data import CallbackData
 def button_group():
     button = ReplyKeyboardMarkup(
         keyboard=[
-            [KeyboardButton(text="Мышление")],
-            [KeyboardButton(text="Мотивация")],
-            [KeyboardButton(text="Женщины")]
+            [KeyboardButton(text="МЫШЛЕНИЕ🧠")],
+            [KeyboardButton(text="МОТИВАЦИЯ💰")],
+            [KeyboardButton(text="ЖЕНЩИНЫ👙")]
         ],
         resize_keyboard=True
     )
     return button
 
 
+
+
+
 def button_thinking():
     button = InlineKeyboardMarkup(
         inline_keyboard=[
-            [InlineKeyboardButton(text="Посмотреть",callback_data="show1")]
+            [InlineKeyboardButton(text="ПОСМОТРЕТЬ🔍",callback_data="show1")]
         ]
     )
     return button
 
 
-
 def button_thinking_under():
     button = InlineKeyboardMarkup(
         inline_keyboard=[
-            [InlineKeyboardButton(text="Добавить",callback_data="add1")],
-            [InlineKeyboardButton(text="Изменить",callback_data="change1")],
-            [InlineKeyboardButton(text="Удалить", callback_data="delete1")]
+            [InlineKeyboardButton(text="ДОБАВИТЬ✅",callback_data="add1")],
+            [InlineKeyboardButton(text="ИЗМЕНИТЬ♻️",callback_data="change1")],
+            [InlineKeyboardButton(text="УДАЛИТЬ🗑️", callback_data="delete1")]
         ]
     )
     return button
@@ -52,10 +54,14 @@ def button_thinking_under():
 def button_thinking_first_add():
     button = InlineKeyboardMarkup(
         inline_keyboard=[
-            [InlineKeyboardButton(text="Добавить",callback_data="firstadd")]
+            [InlineKeyboardButton(text="ДОБАВИТЬ✅",callback_data="firstadd")]
         ]
     )
     return button
+
+
+
+
 
 
 
@@ -64,22 +70,60 @@ def button_thinking_first_add():
 def button_motivation():
     button = InlineKeyboardMarkup(
         inline_keyboard=[
-            [InlineKeyboardButton(text="Посмотреть",callback_data="show2")],
-            [InlineKeyboardButton(text="Добавить",callback_data="add2")],
-            [InlineKeyboardButton(text="Изменить",callback_data="change2")],
-            [InlineKeyboardButton(text="Удалить", callback_data="delete2")]
+            [InlineKeyboardButton(text="ПОСМОТРЕТЬ🔍",callback_data="show2")],
+
+        ]
+    )
+    return button
+
+def button_motivation_under():
+    button = InlineKeyboardMarkup(
+        inline_keyboard=[
+            [InlineKeyboardButton(text="ДОБАВИТЬ✅",callback_data="add2")],
+            [InlineKeyboardButton(text="ИЗМЕНИТЬ♻️",callback_data="change2")],
+            [InlineKeyboardButton(text="УДАЛИТЬ🗑️", callback_data="delete2")]
+        ]
+    )
+    return button
+
+def button_motivation_first_add():
+    button = InlineKeyboardMarkup(
+        inline_keyboard=[
+            [InlineKeyboardButton(text="ДОБАВИТЬ✅",callback_data="firstadd2")]
         ]
     )
     return button
 
 
+
+
+
+
+
+
 def button_woman():
     button = InlineKeyboardMarkup(
         inline_keyboard=[
-            [InlineKeyboardButton(text="Посмотреть",callback_data="show3")],
-            [InlineKeyboardButton(text="Добавить",callback_data="add3")],
-            [InlineKeyboardButton(text="Изменить",callback_data="change3")],
-            [InlineKeyboardButton(text="Удалить", callback_data="delete3")]
+            [InlineKeyboardButton(text="ПОСМОТРЕТЬ🔍",callback_data="show3")],
+        ]
+    )
+    return button
+
+
+def button_woman_under():
+    button = InlineKeyboardMarkup(
+        inline_keyboard=[
+            [InlineKeyboardButton(text="ДОБАВИТЬ✅",callback_data="add3")],
+            [InlineKeyboardButton(text="ИЗМЕНИТЬ♻️",callback_data="change3")],
+            [InlineKeyboardButton(text="УДАЛИТЬ🗑️", callback_data="delete3")]
+        ]
+    )
+    return button
+
+def button_woman_first_add():
+    button = InlineKeyboardMarkup(
+        inline_keyboard=[
+            [InlineKeyboardButton(text="ДОБАВИТЬ✅",callback_data="firstadd3")]
         ]
     )
     return button
